@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Caches / logs
+*.log
+.cache/
+.pytest_cache/
+
+# Local generated data
+data/*.json
+data/*.csv
+data/*.xlsx
+data/*.sqlite
+
+# Keep folder placeholders
+!data/.gitkeep
