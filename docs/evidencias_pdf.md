@@ -4,7 +4,7 @@ Este archivo resume las capturas y textos que deben incluirse en el PDF final de
 
 ## Datos generales
 
-- Repositorio: agregar aqui el enlace publico de GitHub.
+- Repositorio:(https://github.com/marcopenatec-GH/taller4_art_institute_chicago.git)
 - API usada: Art Institute of Chicago API.
 - Endpoint principal: https://api.artic.edu/api/v1/artworks
 - Base de datos: `taller4_db`
