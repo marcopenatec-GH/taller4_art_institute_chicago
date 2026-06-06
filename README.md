@@ -119,16 +119,24 @@ El notebook se conecta a MongoDB, lee la coleccion `raw_data`, crea un DataFrame
 Las transformaciones se hacen en el notebook para respetar el principio del taller:
 MongoDB conserva el dato RAW y Pandas crea una vista curada para EDA.
 
+## Estado verificado localmente
+
+- MongoDB local responde correctamente.
+- La base `taller4_db` y la coleccion `raw_data` contienen 100 documentos.
+- Los 100 documentos tienen `id` unico.
+- `analisis.ipynb` esta ejecutado y guardado con salidas, insights y graficos.
+- La guia de capturas para el PDF esta en `docs/evidencias_pdf.md`.
+
 ## Checklist de entrega
 
 - [ ] Repositorio publico en GitHub.
-- [ ] `README.md` completo.
-- [ ] `requirements.txt` funcional.
-- [ ] `ingesta.py` con minimo 100 registros.
-- [ ] Base de datos `taller4_db`.
-- [ ] Coleccion `raw_data`.
-- [ ] `analisis.ipynb` documentado.
-- [ ] 5 insights.
-- [ ] 3 graficos.
-- [ ] Minimo 5 commits.
+- [x] `README.md` completo.
+- [x] `requirements.txt` funcional.
+- [x] `ingesta.py` con minimo 100 registros.
+- [x] Base de datos `taller4_db`.
+- [x] Coleccion `raw_data`.
+- [x] `analisis.ipynb` documentado.
+- [x] 5 insights.
+- [x] 3 graficos.
+- [x] Minimo 5 commits.
 - [ ] PDF con enlace al repositorio y evidencias.
