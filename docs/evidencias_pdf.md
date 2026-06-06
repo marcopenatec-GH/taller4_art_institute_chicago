@@ -1,4 +1,4 @@
-# Evidencias para el PDF de entrega
+# Evidencias PDF: Entrega
 
 Este archivo resume las capturas y textos que deben incluirse en el PDF final del taller.
 

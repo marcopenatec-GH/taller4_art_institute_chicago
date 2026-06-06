@@ -24,6 +24,9 @@ Esta API no requiere token y permite obtener mas de 100 registros mediante pagin
 
 ```text
 taller4_art_institute/
+  .cache
+  .venv
+  docs
   .env.example
   .gitignore
   README.md
@@ -50,12 +53,12 @@ taller4_art_institute/
 - **Bajo acoplamiento**: la ingesta, la conexion y la validacion estan separadas en funciones pequenas.
 - **Idempotencia**: si se ejecuta de nuevo, `replace_one(..., upsert=True)` actualiza por `id` y evita duplicados.
 - **Trazabilidad**: MongoDB conserva el dato crudo de la API antes de cualquier transformacion.
-- **Validacion post-carga**: el script comprueba que existan al menos 100 documentos en `raw_data`.
+- **Validacion post-carga**: el script comprueba que existan como mínimo 100 documentos en `raw_data`.
 
 ## Requisitos
 
 - Python 3.10 o superior
-- MongoDB local en ejecucion
+- MongoDB local en ejecucion (O en la nube)
 - VS Code
 - Extension de Python y Jupyter en VS Code
 
@@ -65,12 +68,14 @@ Desde la carpeta del proyecto:
 
 ```powershell
 python -m venv .venv
-.\.venv\Scripts\Activate.ps1
+source .venv/bin/activate # macOS / Linux
+.venv\Scripts\activate # Windows
+
 pip install -r requirements.txt
 Copy-Item .env.example .env
 ```
 
-El archivo `.env.example` ya trae los valores solicitados por el taller:
+El archivo `.env.example` ya trae los valores solicitados para la conexión a la base de datos:
 
 ```text
 MONGO_DB=taller4_db
