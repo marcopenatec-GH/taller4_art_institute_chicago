@@ -6,6 +6,10 @@ Proyecto individual para desarrollar un flujo basico de Ciencia de Datos:
 2. Guardar datos crudos en MongoDB.
 3. Realizar un analisis exploratorio en Jupyter Notebook.
 
+El proyecto sigue la logica de un pipeline simple: **extract -> raw -> transform -> EDA**.
+No se incluye una carga a MySQL porque el instructivo de esta actividad pide conservar los
+datos crudos en MongoDB y analizarlos desde un notebook.
+
 ## API seleccionada
 
 Se utiliza la API publica del **Art Institute of Chicago**:
@@ -29,6 +33,24 @@ taller4_art_institute/
   data/
     .gitkeep
 ```
+
+## Pipeline del proyecto
+
+| Etapa | Archivo o herramienta | Proposito |
+| --- | --- | --- |
+| Extract | `ingesta.py` | Consumir la API publica con paginacion. |
+| Raw | MongoDB `taller4_db.raw_data` | Guardar el JSON crudo sin transformar para trazabilidad. |
+| Transform | `analisis.ipynb` | Seleccionar columnas, limpiar nulos, tipificar variables y crear variables auxiliares. |
+| EDA | `analisis.ipynb` | Calcular insights y generar graficos para interpretar los datos. |
+
+## Principios aplicados
+
+- **Reproducibilidad**: el proyecto usa `.env.example` y `requirements.txt` para repetir la ejecucion.
+- **Observabilidad**: `ingesta.py` muestra logs con fuente, destino, paginas procesadas y conteo final.
+- **Bajo acoplamiento**: la ingesta, la conexion y la validacion estan separadas en funciones pequenas.
+- **Idempotencia**: si se ejecuta de nuevo, `replace_one(..., upsert=True)` actualiza por `id` y evita duplicados.
+- **Trazabilidad**: MongoDB conserva el dato crudo de la API antes de cualquier transformacion.
+- **Validacion post-carga**: el script comprueba que existan al menos 100 documentos en `raw_data`.
 
 ## Requisitos
 
@@ -68,6 +90,12 @@ El script descarga minimo 100 obras desde la API y guarda cada documento JSON cr
 - Base de datos: `taller4_db`
 - Coleccion: `raw_data`
 
+Al finalizar, el script muestra una validacion post-carga con:
+
+- Total de documentos en la coleccion.
+- Cantidad de `id` unicos.
+- Muestra de campos disponibles en el documento RAW.
+
 ## Analisis exploratorio
 
 Abrir el notebook:
@@ -78,11 +106,18 @@ analisis.ipynb
 
 El notebook se conecta a MongoDB, lee la coleccion `raw_data`, crea un DataFrame con variables relevantes y desarrolla:
 
+- Validacion de que MongoDB tenga minimo 100 registros.
+- Revision de duplicados por `id`.
+- Diccionario de variables seleccionadas.
+- Limpieza y transformacion minima para analisis.
 - Inspeccion inicial con `head`, `info` y revision de nulos.
 - Minimo 5 insights numericos o conteos.
 - 3 graficos:
   - 1 grafico de torta.
   - 2 graficos libres.
+
+Las transformaciones se hacen en el notebook para respetar el principio del taller:
+MongoDB conserva el dato RAW y Pandas crea una vista curada para EDA.
 
 ## Checklist de entrega
 
